@@ -24,7 +24,7 @@
              $name = self::validate($_POST['userName']);
              $msg = self::validate($_POST['msg']);
              Post::createPost($name,$msg);
-             header ("location: http://public-blog/");
+             header ("location: /");
          }
      }
      
@@ -36,7 +36,7 @@
                  $name = self::validate($_POST['userName']);
                  $msg = self::validate($_POST['msg']);
                  Comment::createComment($number,$name,$msg);
-                 header ("location: http://public-blog/post/current/$id ");
+                 header ("location: /post/current/$id ");
              } else {
                  $this->view->template = null;
                  $this->view->render('error/error404');

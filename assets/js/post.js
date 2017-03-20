@@ -7,7 +7,7 @@ function answerField(id) {
                     '<i class="fa fa-user-circle fa-3x" aria-hidden="true"></i>'+
                 '</div>'+
                 '<div class="col-sm-11">'+
-                    '<form class="form-inline" method="post" action="http://public-blog/post/comment/'+id+'">'+
+                    '<form class="form-inline" method="post" action="/post/comment/'+id+'">'+
                         '<div class="row">'+
                             '<div class="form-group col-sm-2">'+
                                 '<label for="inputName">Name</label>'+

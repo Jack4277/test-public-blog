@@ -55,7 +55,7 @@
        <?php }
     } ?>
 
-    <form class="form-horizontal" method="post" action="http://public-blog/post/create">
+    <form class="form-horizontal" method="post" action="/post/create">
 
         <div class="form-group">
             <label for="inputName" class="col-sm-1 control-label">Name</label>
