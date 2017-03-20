@@ -1,0 +1,74 @@
+-- --------------------------------------------------------
+-- Хост:                         127.0.0.1
+-- Версия сервера:               5.5.45 - MySQL Community Server (GPL)
+-- ОС Сервера:                   Win32
+-- HeidiSQL Версия:              9.3.0.4984
+-- --------------------------------------------------------
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET NAMES utf8mb4 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+
+-- Дамп структуры базы данных public_blog
+CREATE DATABASE IF NOT EXISTS `public_blog` /*!40100 DEFAULT CHARACTER SET utf8 */;
+USE `public_blog`;
+
+
+-- Дамп структуры для таблица public_blog.comments
+CREATE TABLE IF NOT EXISTS `comments` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `post_id` int(11) NOT NULL DEFAULT '0',
+  `author_name` varchar(50) DEFAULT NULL,
+  `comment` text,
+  `data` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  KEY `FK_comments` (`post_id`),
+  CONSTRAINT `FK_comments` FOREIGN KEY (`post_id`) REFERENCES `posts` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8;
+
+-- Дамп данных таблицы public_blog.comments: ~27 rows (приблизительно)
+/*!40000 ALTER TABLE `comments` DISABLE KEYS */;
+INSERT INTO `comments` (`id`, `post_id`, `author_name`, `comment`, `data`) VALUES
+	(1, 7, 'Van Damm', '\r\nLorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda autem doloremque mollitia nulla odio qui quibusdam? Aliquam aperiam dolor labore laudantium nemo, nobis perspiciatis porro quisquam quos similique tempora, veritatis.', '2017-03-14 18:25:15'),
+	(2, 7, 'Bruce', '\r\nLorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda autem doloremque mollitia nulla odio qui quibusdam? Aliquam aperiam dolor labore laudantium nemo, nobis perspiciatis porro quisquam quos similique tempora, veritatis.', '2017-03-14 18:25:33'),
+	(3, 7, 'Sergey', '\r\nLorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda autem doloremque mollitia nulla odio qui quibusdam? Aliquam aperiam dolor labore laudantium nemo, nobis perspiciatis porro quisquam quos similique tempora, veritatis.', '2017-03-14 18:27:52'),
+	(4, 6, 'Ron', '\r\nLorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda autem doloremque mollitia nulla odio qui quibusdam? Aliquam aperiam dolor labore laudantium nemo, nobis perspiciatis porro quisquam quos similique tempora, veritatis.', '2017-03-14 18:28:13'),
+	(5, 6, 'Harry', '\r\nLorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda autem doloremque mollitia nulla odio qui quibusdam? Aliquam aperiam dolor labore laudantium nemo, nobis perspiciatis porro quisquam quos similique tempora, veritatis.', '2017-03-14 18:28:35'),
+	(6, 9, 'Phil', '\r\nLorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda autem doloremque mollitia nulla odio qui quibusdam? Aliquam aperiam dolor labore laudantium nemo, nobis perspiciatis porro quisquam quos similique tempora, veritatis.', '2017-03-14 18:28:58'),
+	(7, 8, 'James', '\r\nLorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda autem doloremque mollitia nulla odio qui quibusdam? Aliquam aperiam dolor labore laudantium nemo, nobis perspiciatis porro quisquam quos similique tempora, veritatis.', '2017-03-14 18:29:23'),
+	(8, 5, 'Brooks', '\r\nLorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda autem doloremque mollitia nulla odio qui quibusdam? Aliquam aperiam dolor labore laudantium nemo, nobis perspiciatis porro quisquam quos similique tempora, veritatis.', '2017-03-14 18:29:54'),
+	(9, 7, 'Greg', 'very good post', '2017-03-16 17:44:22'),
+	(10, 7, 'CJ', 'Damn , good story', '2017-03-16 17:44:49');
+/*!40000 ALTER TABLE `comments` ENABLE KEYS */;
+
+
+-- Дамп структуры для таблица public_blog.posts
+CREATE TABLE IF NOT EXISTS `posts` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `author_name` varchar(50) DEFAULT NULL,
+  `text` text,
+  `data` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8;
+
+-- Дамп данных таблицы public_blog.posts: ~18 rows (приблизительно)
+/*!40000 ALTER TABLE `posts` DISABLE KEYS */;
+INSERT INTO `posts` (`id`, `author_name`, `text`, `data`) VALUES
+	(1, 'Vasya', '\r\nLorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda autem doloremque mollitia nulla odio qui quibusdam? Aliquam aperiam dolor labore laudantium nemo, nobis perspiciatis porro quisquam quos similique tempora, veritatis.', '2017-03-14 18:21:29'),
+	(2, 'Kolya', '\r\nLorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda autem doloremque mollitia nulla odio qui quibusdam? Aliquam aperiam dolor labore laudantium nemo, nobis perspiciatis porro quisquam quos similique tempora, veritatis.', '2017-03-14 18:22:15'),
+	(3, 'Petya', '\r\nLorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda autem doloremque mollitia nulla odio qui quibusdam? Aliquam aperiam dolor labore laudantium nemo, nobis perspiciatis porro quisquam quos similique tempora, veritatis.', '2017-03-14 18:22:30'),
+	(4, 'Tom', '\r\nLorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda autem doloremque mollitia nulla odio qui quibusdam? Aliquam aperiam dolor labore laudantium nemo, nobis perspiciatis porro quisquam quos similique tempora, veritatis.', '2017-03-14 18:22:48'),
+	(5, 'Jerry', '\r\nLorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda autem doloremque mollitia nulla odio qui quibusdam? Aliquam aperiam dolor labore laudantium nemo, nobis perspiciatis porro quisquam quos similique tempora, veritatis.', '2017-03-14 18:23:03'),
+	(6, 'Clif', '\r\nLorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda autem doloremque mollitia nulla odio qui quibusdam? Aliquam aperiam dolor labore laudantium nemo, nobis perspiciatis porro quisquam quos similique tempora, veritatis.', '2017-03-14 18:23:25'),
+	(7, 'Bob', '\r\nLorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda autem doloremque mollitia nulla odio qui quibusdam? Aliquam aperiam dolor labore laudantium nemo, nobis perspiciatis porro quisquam quos similique tempora, veritatis.', '2017-03-14 18:23:45'),
+	(8, 'Carl', '\r\nLorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda autem doloremque mollitia nulla odio qui quibusdam? Aliquam aperiam dolor labore laudantium nemo, nobis perspiciatis porro quisquam quos similique tempora, veritatis.', '2017-03-14 18:24:07'),
+	(9, 'Donald', '\r\nLorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda autem doloremque mollitia nulla odio qui quibusdam? Aliquam aperiam dolor labore laudantium nemo, nobis perspiciatis porro quisquam quos similique tempora, veritatis.', '2017-03-14 18:24:23'),
+	(10, 'Ronald', '\r\nLorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda autem doloremque mollitia nulla odio qui quibusdam? Aliquam aperiam dolor labore laudantium nemo, nobis perspiciatis porro quisquam quos similique tempora, veritatis.', '2017-03-14 18:24:39'),
+	(11, 'Don', 'INSE', '2017-03-16 16:28:54'),
+	(12, 'Jack', 'Vaery very interesting post', '2017-03-16 16:29:57'),
+	(13, 'Black', 'Cool story', '2017-03-16 16:33:12');
+/*!40000 ALTER TABLE `posts` ENABLE KEYS */;
+/*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
+/*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
